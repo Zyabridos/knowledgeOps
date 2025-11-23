@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { calculateStats } from "../src/utils/ stats";
+import { calculateStats } from "../src/utils/stats";
 import { scenariosForStats } from "../__fixtures__/mockScenarios";
 
 describe("calculateStats", () => {
