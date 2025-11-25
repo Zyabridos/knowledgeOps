@@ -5,7 +5,24 @@ import Image from "next/image";
 import Link from "next/link";
 import { urlForImage } from "@/lib/sanityImage";
 
-export default function FrosthavenListClient({ scenarios }) {
+type FrosthavenScenario = {
+  _id: string;
+  slug?: { current?: string };
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  mainImage?: any;
+  title: string;
+  scenarioNumber?: number;
+  scenarioName?: string;
+  datePlayed: string;
+};
+
+type FrosthavenListClientProps = {
+  scenarios: FrosthavenScenario[];
+};
+
+export default function FrosthavenListClient({
+  scenarios,
+}: FrosthavenListClientProps) {
   const { t } = useLocale();
 
   if (!scenarios || scenarios.length === 0) {
@@ -41,8 +58,13 @@ export default function FrosthavenListClient({ scenarios }) {
   );
 }
 
-function Card({ scenario }) {
+type CardProps = {
+  scenario: FrosthavenScenario;
+};
+
+function Card({ scenario }: CardProps) {
   const { t } = useLocale();
+  // to do - remove hardcoded path
   const href = `/frosthaven-scenarios/${scenario.slug?.current}`;
 
   return (

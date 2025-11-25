@@ -1,5 +1,5 @@
 import { FastifyInstance } from "fastify";
-import { sanity } from "../../plugins/sanityClient.js";
+import sanity from "../../plugins/sanityClient.js";
 import { frosthavenScenariosQuery } from "./queries.js";
 import { calculateStats } from "../../utils/stats.js";
 

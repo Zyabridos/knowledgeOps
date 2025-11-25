@@ -1,4 +1,4 @@
-import { sanityClient } from "@/lib/sanityClient";
+import sanityClient from "@/lib/sanityClient";
 import { frosthavenScenariosQuery } from "@/lib/queries";
 import { urlForImage } from "@/lib/sanityImage";
 import Link from "next/link";

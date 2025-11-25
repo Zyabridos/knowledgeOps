@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-import { sanityClient } from "@/lib/sanityClient";
+import sanityClient from "@/lib/sanityClient";
 import { frosthavenScenariosQuery } from "@/lib/queries";
 import { urlForImage } from "@/lib/sanityImage";
 import { useLocale } from "@/app/context/LocaleContext";
