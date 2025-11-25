@@ -1,22 +1,32 @@
----
+- name: Ensure project directory exists TODO remove this task when infra is complete
+  file:
+    path: "{{ project_dir }}"
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+  tags: deploy
+
 - name: Sync app repo from GitHub
   git:
-    repo: "https://github.com/Zyabridos/gamePrintHub.git"
-    dest: /opt/frostops
-    version: "feature/prod-infra-terraform-ansible"
+    repo: "{{ app_repo_url }}"
+    dest: "{{ project_dir }}"
+    version: "{{ app_repo_version }}"
     force: yes
   tags: deploy
 
+- name: Ensure frontend app directory exists TODO remove this task when infra is complete
+  file:
+    path: "{{ project_dir }}/apps/frontend"
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+  tags: deploy
 
-- name: Create env files for app
-  copy:
-    dest: "{{ project_dir }}/{{ item }}"
-    mode: "0640"
-    content: |
-      NODE_ENV=production
-      BACKEND_PORT=5000
-      FRONTEND_PORT=3000
-      NEXT_PUBLIC_API_URL=http://{{ hostvars[inventory_hostname].ansible_host | default(inventory_hostname) }}/api
-  loop:
-    - .env
-    - .env.production
+- name: Generate frontend .env.production
+  ansible.builtin.template:
+    src: templates/secrets/frontend.env.production.j2
+    dest: "{{ project_dir }}/apps/frontend/.env.production"
+    mode: "0600"
+  tags: deploy

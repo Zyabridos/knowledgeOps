@@ -1,0 +1,12 @@
+project_dir: /root/gamePrintHub
+
+frontend_env_vars:
+  NODE_ENV: "production"
+  BACKEND_PORT: 5000
+  FRONTEND_PORT: 3000
+
+  NEXT_PUBLIC_API_URL: "https://{{ hostvars[inventory_hostname].ansible_host }}/api"
+
+  NEXT_PUBLIC_SANITY_PROJECT_ID: "{{ vault_sanity_project_id }}"
+  NEXT_PUBLIC_SANITY_DATASET: "production"
+  NEXT_PUBLIC_SANITY_API_VERSION: "2025-11-01"
