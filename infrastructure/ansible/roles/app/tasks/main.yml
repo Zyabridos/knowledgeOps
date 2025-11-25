@@ -1,4 +1,13 @@
 ---
+- name: Sync app repo from GitHub
+  git:
+    repo: "https://github.com/Zyabridos/gamePrintHub.git"
+    dest: /opt/frostops
+    version: "feature/prod-infra-terraform-ansible"
+    force: yes
+  tags: deploy
+
+
 - name: Create env files for app
   copy:
     dest: "{{ project_dir }}/{{ item }}"
