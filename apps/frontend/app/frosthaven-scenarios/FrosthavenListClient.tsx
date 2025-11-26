@@ -5,7 +5,21 @@ import Image from "next/image";
 import Link from "next/link";
 import { urlForImage } from "@/lib/sanityImage";
 
-export default function FrosthavenListClient({ scenarios }) {
+interface Scenario {
+  _id: string;
+  title: string;
+  scenarioName: string;
+  scenarioNumber?: number;
+  datePlayed: string;
+  slug?: { current: string };
+  mainImage?: File; // evnt string
+}
+
+export default function FrosthavenListClient({
+  scenarios,
+}: {
+  scenarios: Scenario[];
+}) {
   const { t } = useLocale();
 
   if (!scenarios || scenarios.length === 0) {
@@ -41,7 +55,7 @@ export default function FrosthavenListClient({ scenarios }) {
   );
 }
 
-function Card({ scenario }) {
+function Card({ scenario }: { scenario: Scenario }) {
   const { t } = useLocale();
   const href = `/frosthaven-scenarios/${scenario.slug?.current}`;
 
