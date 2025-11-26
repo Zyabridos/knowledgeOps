@@ -6,7 +6,11 @@
     "dev": "tsx watch src/server.ts",
     "build": "tsc",
     "start": "node dist/server.js",
-    "test": "vitest"
+    "test": "vitest",
+    "migrate:make": "knex migrate:make --knexfile ./knexfile.cjs",
+    "migrate:latest": "knex migrate:latest --knexfile ./knexfile.cjs",
+    "migrate:rollback": "knex migrate:rollback --knexfile ./knexfile.cjs",
+    "seed:run": "knex seed:run --knexfile ./knexfile.cjs"
   },
   "dependencies": {
     "@sanity/client": "^6.8.5",
