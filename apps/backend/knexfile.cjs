@@ -1,7 +1,8 @@
 const dotenv = require('dotenv');
+const path = require('path');
 
 /** @type {Record<string, import('knex').Knex.Config>} */
-dotenv.config();
+dotenv.config({ path: path.resolve(__dirname, "../../../", ".env") });
 
 const shared = {
   client: 'pg',

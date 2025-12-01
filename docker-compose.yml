@@ -23,7 +23,7 @@ services:
       - postgres
     restart: unless-stopped
     ports:
-      - "5001:5001"
+      - "5000:5000"
 
   frontend:
     build:

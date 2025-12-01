@@ -1,4 +1,3 @@
-// apps/backend/src/routes/paintingArticlesRoutes.ts
 import { FastifyInstance, FastifyPluginAsync } from "fastify";
 import { db } from "../../db/knex.js";
 

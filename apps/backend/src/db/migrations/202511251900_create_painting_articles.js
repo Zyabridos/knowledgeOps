@@ -1,6 +1,3 @@
-/**
- * @param {import('knex').Knex} knex
- */
 export async function up(knex) {
   await knex.schema.createTable("painting_articles", (table) => {
     table.increments("id").primary();
@@ -11,9 +8,6 @@ export async function up(knex) {
   });
 }
 
-/**
- * @param {import('knex').Knex} knex
- */
 export async function down(knex) {
   await knex.schema.dropTableIfExists("painting_articles");
 }

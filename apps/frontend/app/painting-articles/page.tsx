@@ -1,4 +1,4 @@
-import React from "react";
+import { apiFetch } from "@/lib/apiClient";
 
 type PaintingArticle = {
   id: number;
@@ -7,12 +7,9 @@ type PaintingArticle = {
   created_at: string;
   updated_at: string;
 };
-
 async function getArticles(): Promise<PaintingArticle[]> {
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-
-  const res = await fetch(`${apiUrl}/api/painting-articles`, {
-    // so we always get fresh data
+  // TODO: remove hardcoded URL
+  const res = await apiFetch("/api/painting-articles", {
     cache: "no-store",
   });
 
@@ -47,8 +44,6 @@ export default async function PaintingArticlesListPage() {
 
       <ul className="space-y-4">
         {articles.map((article) => (
-          // apps/frontend/app/painting-articles/page.tsx (внутри map)
-
           <li
             key={article.id}
             className="rounded-lg border border-gray-700 bg-gray-900/60 p-4"

@@ -1,10 +1,11 @@
 import Fastify from "fastify";
 import dotenv from "dotenv";
+import path from "path";
 import cors from "@fastify/cors";
 
 import { paintingArticlesRoutes } from "./routes/painting-articles/paintingArticlesRoutes.js";
 
-dotenv.config();
+dotenv.config({ path: path.resolve(__dirname, "../../..", ".env") });
 
 const server = Fastify({ logger: true });
 
@@ -27,7 +28,7 @@ server.register(paintingArticlesRoutes);
 
 const start = async () => {
   try {
-    const port = Number(process.env.PORT) || 5001;
+    const port = Number(process.env.API_PORT);
     await server.listen({ port, host: "0.0.0.0" });
     console.log(`Backend running on http://localhost:${port}`);
   } catch (err) {

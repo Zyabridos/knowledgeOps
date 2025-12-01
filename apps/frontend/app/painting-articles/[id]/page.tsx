@@ -13,7 +13,7 @@ type PageProps = {
 };
 
 async function getArticle(id: string): Promise<PaintingArticle | null> {
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5001";
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
   const res = await fetch(`${apiUrl}/api/painting-articles/${id}`, {
     cache: "no-store",
