@@ -26,7 +26,6 @@ jobs:
       TEST_DB_USER: ${{ secrets.TEST_DB_USER }}
       TEST_DB_PASSWORD: ${{ secrets.TEST_DB_PASSWORD }}
       TEST_DB_NAME: ${{ secrets.TEST_DB_NAME }}
-      TEST_DATABASE_URL: ${{ secrets.TEST_DATABASE_URL }}
 
     services:
       postgres:
@@ -72,22 +71,10 @@ jobs:
         working-directory: apps/backend
         env:
           NODE_ENV: test
-          TEST_DB_HOST: ${{ env.TEST_DB_HOST }}
-          TEST_DB_PORT: ${{ env.TEST_DB_PORT }}
-          TEST_DB_USER: ${{ env.TEST_DB_USER }}
-          TEST_DB_PASSWORD: ${{ env.TEST_DB_PASSWORD }}
-          TEST_DB_NAME: ${{ env.TEST_DB_NAME }}
-          TEST_DATABASE_URL: ${{ env.TEST_DATABASE_URL }}
         run: npm run migrate:latest
 
       - name: Run backend unit tests
         working-directory: apps/backend
         env:
           NODE_ENV: test
-          TEST_DB_HOST: ${{ env.TEST_DB_HOST }}
-          TEST_DB_PORT: ${{ env.TEST_DB_PORT }}
-          TEST_DB_USER: ${{ env.TEST_DB_USER }}
-          TEST_DB_PASSWORD: ${{ env.TEST_DB_PASSWORD }}
-          TEST_DB_NAME: ${{ env.TEST_DB_NAME }}
-          TEST_DATABASE_URL: ${{ env.TEST_DATABASE_URL }}
         run: npm test --silent

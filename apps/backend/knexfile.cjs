@@ -31,7 +31,7 @@ const config = {
   },
   test: {
     ...shared,
-    connection: process.env.TEST_DATABASE_URL || {
+    connection: {
       host: process.env.TEST_DB_HOST || 'localhost',
       port: Number(process.env.TEST_DB_PORT) || 5433,
       user: process.env.TEST_DB_USER,
