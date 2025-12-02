@@ -2,9 +2,9 @@
 #   Game Print Hub — Docker Commands
 # =========================================
 
-BACKEND = gameprinthub-backend-1
-FRONTEND = gameprinthub-frontend-1
-POSTGRES = gameprinthub-postgres-1
+BACKEND = backend
+FRONTEND = frontend
+POSTGRES = postgres
 
 # ----------- Docker-----------
 
@@ -48,15 +48,14 @@ clean:
 
 sh-backend:
 	@echo "Opening shell in backend..."
-	docker compose exec backend sh
+	docker compose exec $(BACKEND) sh
 
 sh-frontend:
 	@echo "Opening shell in frontend..."
-	docker compose exec frontend sh
-
+	docker compose exec $(FRONTEND) sh
 sh-db:
 	@echo "Opening shell in Postgres..."
-	docker compose exec postgres bash	
+	docker compose exec $(POSTGRES) bash	
 
 # ----------- Logs -----------
 

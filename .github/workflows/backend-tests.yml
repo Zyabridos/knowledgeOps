@@ -21,15 +21,18 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
+      TEST_DB_HOST: ${{ secrets.TEST_DB_HOST }}
+      TEST_DB_PORT: ${{ secrets.TEST_DB_PORT }}
       TEST_DB_USER: ${{ secrets.TEST_DB_USER }}
       TEST_DB_PASSWORD: ${{ secrets.TEST_DB_PASSWORD }}
       TEST_DB_NAME: ${{ secrets.TEST_DB_NAME }}
+      TEST_DATABASE_URL: ${{ secrets.TEST_DATABASE_URL }}
 
     services:
       postgres:
         image: postgres:15
         ports:
-          - "5433:5432"
+          - "${{ env.TEST_DB_PORT }}:5432"
         env:
           POSTGRES_USER: ${{ env.TEST_DB_USER }}
           POSTGRES_PASSWORD: ${{ env.TEST_DB_PASSWORD }}
@@ -57,25 +60,13 @@ jobs:
         working-directory: apps/backend
         run: npm install
 
-      - name: Set environment variables for tests
-        working-directory: apps/backend
-        env:
-          TEST_DB_USER: ${{ env.TEST_DB_USER }}
-          TEST_DB_PASSWORD: ${{ env.TEST_DB_PASSWORD }}
-          TEST_DB_NAME: ${{ env.TEST_DB_NAME }}
-        run: |
-          echo "DB_HOST=localhost" >> .env.test
-          echo "DB_PORT=5433" >> .env.test
-          echo "DB_USER=$TEST_DB_USER" >> .env.test
-          echo "DB_PASSWORD=$TEST_DB_PASSWORD" >> .env.test
-          echo "DB_NAME=$TEST_DB_NAME" >> .env.test
-          echo "DATABASE_URL=postgres://$TEST_DB_USER:$TEST_DB_PASSWORD@localhost:5433/$TEST_DB_NAME" >> .env.test
-
       - name: Wait for PostgreSQL
+        env:
+          TEST_DB_PORT: ${{ env.TEST_DB_PORT }}
         run: |
           for i in {1..30}; do
-            nc -z localhost 5433 && echo "Postgres is up" && break
-            echo "Waiting for Postgres..."
+            nc -z localhost "${TEST_DB_PORT:-5433}" && echo "Postgres is up" && break
+            echo "Waiting for Postgres on port ${TEST_DB_PORT:-5433}..."
             sleep 1
           done
 
