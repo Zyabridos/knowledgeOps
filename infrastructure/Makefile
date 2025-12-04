@@ -23,7 +23,7 @@ output:
 
 ping:
 	@echo "Pinging web servers..."
-	cd $(ANSIBLE_DIR) && ansible -i inventory.ini webservers -m ping --vault-password-file $(VAULT_PASS_FILE)
+	cd $(ANSIBLE_DIR) && ansible -i inventory.ini game_print_hub_prod -m ping --vault-password-file $(VAULT_PASS_FILE)
 
 ansible-dry-run:
 	@echo "Running playbook in CHECK (dry-run) mode..."

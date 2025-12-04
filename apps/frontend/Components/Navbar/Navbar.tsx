@@ -10,8 +10,6 @@ export function Navbar() {
   const { t, locale, setLocale } = useLocale();
 
   const navItems = [
-    { href: "/", label: t.nav.home },
-    { href: "/frosthaven-scenarios", label: t.nav.frosthaven },
     { href: "/3d-printing-storage", label: t.nav.printing },
     { href: "painting-articles", label: t.nav.painting_articles },
   ];

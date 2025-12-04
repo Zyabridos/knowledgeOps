@@ -54,7 +54,7 @@ export default function HomePage() {
             description
           </p>
           <span className="text-sm font-medium text-slate-900 underline underline-offset-4 group-hover:no-underline dark:text-slate-100">
-            go to
+            {t.home.paintingCta}
           </span>
         </Link>
       </section>

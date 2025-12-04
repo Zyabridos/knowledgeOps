@@ -34,3 +34,8 @@
     cmd: docker compose up -d --build
   register: compose_result
   changed_when: "'Creating' in compose_result.stdout or 'Recreating' in compose_result.stdout or 'Building' in compose_result.stdout"
+
+- name: Run DB migrations (backend)
+  ansible.builtin.command: docker compose exec -T backend npm run migrate:latest
+  args:
+    chdir: "{{ project_root_remote }}"

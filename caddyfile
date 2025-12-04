@@ -11,8 +11,6 @@ gameprinthub.online {
     handle {
         reverse_proxy frontend:3000
     }
-
-    # 404 rendered by frontend
 }
 
 

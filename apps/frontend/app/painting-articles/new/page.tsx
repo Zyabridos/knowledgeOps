@@ -3,14 +3,10 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 
-const DEFAULT_TITLE = "Painting the Walls – Quick, Rough, but Effective";
-
-const DEFAULT_CONTENT = `When it comes to painting walls, especially in large areas like basements or terrain pieces, the goal is often to achieve a quick and effective result rather than a flawless finish. Here are some tips and techniques to help you paint walls efficiently while still achieving a visually appealing outcome.`;
-
 export default function NewPaintingArticlePage() {
   const router = useRouter();
-  const [title, setTitle] = useState(DEFAULT_TITLE);
-  const [content, setContent] = useState(DEFAULT_CONTENT);
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -21,15 +17,12 @@ export default function NewPaintingArticlePage() {
 
     try {
       const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-      console.log("API URL:", apiUrl);
 
       const res = await fetch(`${apiUrl}/api/painting-articles`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ title, content }),
       });
-
-      console.log("sending POST to", `${apiUrl}/api/painting-articles`);
 
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
@@ -49,8 +42,8 @@ export default function NewPaintingArticlePage() {
     <main className="mx-auto max-w-3xl px-4 py-8">
       <h1 className="mb-4 text-3xl font-bold">Create painting article</h1>
       <p className="mb-6 text-sm text-gray-400">
-        Здесь можно написать статью про покраску стен / террейна. По умолчанию
-        подставлен твой пример.
+        Here you can create a new painting article. Fill in the title and
+        content, then hit "Save article" to store it.
       </p>
 
       <form onSubmit={handleSubmit} className="space-y-4">

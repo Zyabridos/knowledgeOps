@@ -1,14 +1,22 @@
 const en = {
   nav: {
     home: "Home",
-    frosthaven: "Frosthaven Scenarios",
     printing: "3D Printing Storage",
     painting_articles: "Painting Articles",
   },
   home: {
-    title: "Frosthaven Hub",
-    description:
-      "Personal Frosthaven base: scenarios with photos and notes, plus a library of 3D models and storage boxes. Everything in one place so you never lose your progress or STL files.",
+    title: "Real-Time Knowledge Base & Content Intelligence Platform",
+    description: `
+Game Print Hub is a personal full-stack engineering playground created partly for fun and partly to help me grow as an engineer.
+
+It's where I experiment with frontend, backend, infrastructure, DevOps, 3D printing workflows, and everything in between.
+
+Although the platform is deployed and continuously evolving, it is far from being a finished or polished product.
+Many features are incomplete, some routes break, and parts of the system may change drastically from one week to another.
+This is fine by me — Game Print Hub is a long-term learning project, not a commercial service.
+
+Over time, as I refine both the codebase and the architecture, I hope the site will grow into a fully working, stable environment that reflects my progress as an engineer.
+`,
     scenariosTitle: "Frosthaven Scenarios",
     scenariosBadge: "Scenarios & photos",
     scenariosDescription:
@@ -19,6 +27,7 @@ const en = {
     printingDescription:
       "Local library of boxes, organizers and other 3D models for Frosthaven. With links to sources, print settings notes and status (printed / in queue).",
     printingCta: "Go to STL storage →",
+    paintingCta: "Go to painting articles →",
   },
   frosthavenList: {
     title: "Frosthaven Scenarios",
@@ -36,7 +45,7 @@ const en = {
   printing: {
     title: "3D Printing Storage",
     description:
-      "Here will be an STL library for Frosthaven: boxes, organizers, stands and other useful models. Later I will connect Sanity to store links and print settings (or something)",
+      "Here will be an STL library for... boards games (?): boxes, organizers, stands and other useful models.",
     placeholder: "Yeah, something",
   },
 };

@@ -6,14 +6,14 @@ on:
       - main
 
 env:
-      TEST_DB_HOST: localhost
-      TEST_DB_PORT: 5433
-      TEST_DB_USER: ${{ secrets.TEST_DB_USER }}
-      TEST_DB_PASSWORD: ${{ secrets.TEST_DB_PASSWORD }}
-      TEST_DB_NAME: ${{ secrets.TEST_DB_NAME }}
+  TEST_DB_HOST: localhost
+  TEST_DB_PORT: 5433
+  TEST_DB_USER: ${{ secrets.TEST_DB_USER }}
+  TEST_DB_PASSWORD: ${{ secrets.TEST_DB_PASSWORD }}
+  TEST_DB_NAME: ${{ secrets.TEST_DB_NAME }}
 
-      NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
-      INTERNAL_API_URL: ${{ secrets.INTERNAL_API_URL }}
+  NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
+  INTERNAL_API_URL: ${{ secrets.INTERNAL_API_URL }}
 
 jobs:
   push:

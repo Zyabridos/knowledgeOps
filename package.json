@@ -49,9 +49,6 @@
     "apps/**/*.{js,jsx,ts,tsx}": [
       "npx prettier --write"
     ],
-    "cms/**/*.{js,jsx,ts,tsx}": [
-      "npx prettier --write"
-    ],
     "*.{md,json,css,scss}": [
       "npx prettier --write"
     ]
