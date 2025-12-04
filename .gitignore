@@ -8,7 +8,7 @@ crash.log
 terraform.tfvars
 secrets.auto.tfvars
 secrets.backend.tfvars
-ansible/vault-password
+vault-password
 
 # Dependencies
 node_modules/
