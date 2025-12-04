@@ -33,13 +33,13 @@ jobs:
           printf "Host *\n  StrictHostKeyChecking no\n" >> ~/.ssh/config
 
       - name: Terraform init
-        working-directory: infrastructure
+        working-directory: infrastructure/terraform
         env:
           TF_VAR_hcloud_token: ${{ secrets.HCLOUD_TOKEN }}
         run: terraform init -input=false
 
       - name: Terraform apply
-        working-directory: infrastructure
+        working-directory: infrastructure/terraform
         env:
           TF_VAR_hcloud_token: ${{ secrets.HCLOUD_TOKEN }}
         run: terraform apply -input=false -auto-approve
